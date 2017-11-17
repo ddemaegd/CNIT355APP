@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.cnit355.decisionmaker.CoinFlipActivity">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:background="#5998ff"
+        android:textColor="#FFFFFF"
+        android:text="  > Back"
+        android:textAlignment="viewStart" />
+
 </android.support.constraint.ConstraintLayout>
