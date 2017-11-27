@@ -1,6 +1,8 @@
 package com.cnit355.decisionmaker;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,15 +23,13 @@ public class DiceRollActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice_roll);
 
+        // Instantiate objects, and get the die size
         diePicture = (ImageView) findViewById(R.id.imgDie);
         txtOutput = (TextView) findViewById(R.id.txtOutput);
         Intent intent = getIntent();
         dieSize = intent.getIntExtra("die", 0);
 
-        if(dieSize == 6) {
-            diePicture.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.d6_6, null));
-        }
-
+        setDieImage(dieSize, dieSize);
     }
 
     public void btnBack(View view) {
@@ -38,20 +38,21 @@ public class DiceRollActivity extends AppCompatActivity {
 
     public void btnRoll(View view) {
         int result = getResult(dieSize);
-        try {
-            animateDie(dieSize);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if(dieSize == 6) {
-            setD6Image(result);
-            txtOutput.setText("Result: " + Integer.toString(result));
-        }
+        setDieImage(dieSize, result);
+        txtOutput.setText("Result: " + Integer.toString(result));
     }
 
     private int getResult(int dieSize) {
         Random rand = new Random();
         return rand.nextInt(dieSize)+1;
+    }
+
+    private void setDieImage(int dieSize, int result) {
+        switch(dieSize) {
+            case 6:
+                setD6Image(result);
+                break;
+        }
     }
 
     private void setD6Image(int result) {
@@ -73,28 +74,6 @@ public class DiceRollActivity extends AppCompatActivity {
                 break;
             case 6:
                 diePicture.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.d6_6, null));
-                break;
-        }
-    }
-
-    private void animateDie(int dieSize) throws InterruptedException {
-
-        setDieImage(dieSize, getResult(dieSize));
-        Thread.sleep(150);
-        setDieImage(dieSize, getResult(dieSize));
-        Thread.sleep(200);
-        setDieImage(dieSize, getResult(dieSize));
-        Thread.sleep(300);
-        setDieImage(dieSize, getResult(dieSize));
-        Thread.sleep(450);
-        setDieImage(dieSize, getResult(dieSize));
-
-    }
-
-    private void setDieImage(int dieSize, int result) {
-        switch(dieSize) {
-            case 6:
-                setD6Image(result);
                 break;
         }
     }
