@@ -8,16 +8,18 @@
     tools:context="com.cnit355.decisionmaker.SpinWheelSelectionActivity">
 
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="29dp"
         android:background="#5998ff"
-        android:textColor="#FFFFFF"
+        android:onClick="Back"
         android:text="  > Back"
-        android:textAlignment="viewStart" />
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="509dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,22 +31,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".40" />
-
-                    <TextView
-                        android:id="@+id/txtTotal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".60"
-                        android:text="Total Percentage:" />
-                </TableRow>
 
                 <TableRow>
 
@@ -65,5 +51,15 @@
             </TableLayout>
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:background="#5998ff"
+        android:onClick="Next"
+        android:text="Next >   "
+        android:textAlignment="textEnd"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
