@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class SpinWheelSelectionActivity extends AppCompatActivity {
     Bundle data;
     ArrayList<Integer> Weights;
     ArrayList<String> Titles;
+    DisplayMetrics displayMetrics;
 
 
     @Override
@@ -52,10 +54,11 @@ public class SpinWheelSelectionActivity extends AppCompatActivity {
     public void AddSelection()
     {
         final TableRow row= new TableRow(this);
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
         row.setLayoutParams(lp);
         row.setId(rowID);
         final EditText editText = new EditText(this);
+        editText.setWidth(750);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -83,6 +86,7 @@ public class SpinWheelSelectionActivity extends AppCompatActivity {
 
         final EditText editText2 = new EditText(this);
         editText2.setText("");
+        editText2.setWidth(200);
         editText2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
