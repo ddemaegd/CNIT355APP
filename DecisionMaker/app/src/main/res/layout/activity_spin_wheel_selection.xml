@@ -1,65 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.cnit355.decisionmaker.SpinWheelSelectionActivity">
-
-    <Button
-        android:id="@+id/button"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="29dp"
-        android:background="#5998ff"
-        android:onClick="Back"
-        android:text="  > Back"
-        android:textAlignment="viewStart"
-        android:textColor="#FFFFFF" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.cnit355.decisionmaker.SpinWheelSelectionActivity"
+        android:weightSum="1"
+        android:layout_above="@+id/btnNext">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="509dp">
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:background="#5998ff"
+            android:onClick="Back"
+            android:text="  > Back"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF" />
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_weight="0.95">
 
-            <TableLayout
-                android:id="@+id/Table"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TableLayout
+                    android:id="@+id/Table"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
 
-                <TableRow>
+                    <TableRow android:layout_height="match_parent"
+                        android:layout_width="match_parent">
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".40" />
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".40" />
 
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".60"
-                        android:onClick="AddSelection"
-                        android:text="Add Another Piece" />
-                </TableRow>
-            </TableLayout>
-        </LinearLayout>
-    </ScrollView>
+                        <Button
+                            android:id="@+id/button2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".60"
+                            android:onClick="AddSelection"
+                            android:text="Add Another Piece" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="29dp"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         android:background="#5998ff"
         android:onClick="Next"
         android:text="Next >   "
         android:textAlignment="textEnd"
         android:textColor="#FFFFFF" />
 
-</LinearLayout>
+
+</RelativeLayout>
