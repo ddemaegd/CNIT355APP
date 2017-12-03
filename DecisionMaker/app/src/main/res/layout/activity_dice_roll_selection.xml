@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cnit355.decisionmaker.DiceRollSelectionActivity"
-    android:orientation="vertical">
+    tools:context="com.cnit355.decisionmaker.DiceRollSelectionActivity">
 
     <Button
+        android:id="@+id/btnBack"
         android:layout_width="match_parent"
         android:layout_height="29dp"
         android:background="#5998ff"
@@ -17,10 +17,27 @@
         android:onClick="btnBack"/>
 
     <Button
+        android:id="@+id/btnD6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:onClick="btnD6Click"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnBack"
+        android:layout_margin="15dp"
         android:text="D6"/>
 
-</LinearLayout>
+    <CheckBox
+        android:id="@+id/chkAnimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:text="Animate Die Rolls"
+        android:onClick="chkAnimateClick"
+        />
+
+
+
+</RelativeLayout>

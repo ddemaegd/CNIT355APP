@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.cnit355.decisionmaker.DiceRollActivity"
     android:orientation="vertical">
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="29dp"
@@ -16,31 +15,41 @@
         android:textAlignment="viewStart"
         android:onClick="btnBack"/>
 
-    <ImageView
-        android:id="@+id/imgDie"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp" />
+    <RelativeLayout
+        android:id="@+id/dieLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/txtOutput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text=""
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:layout_margin="30dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Roll"
-        android:onClick="btnRoll"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp" />
+
+
+        <TextView
+            android:id="@+id/txtOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnRoll"
+            android:layout_centerInParent="true"
+            android:text="Click button to roll die"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btnRoll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="btnRoll"
+            android:text="Roll" />
+
+    </RelativeLayout>
 
 </LinearLayout>
