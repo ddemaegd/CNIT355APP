@@ -73,6 +73,7 @@ public class SpinWheelActivity extends AppCompatActivity {
         pieChart.setData(pieData);
         pieChart.animateY(1000);
         pieChart.setRotationEnabled(false);
+        pieChart.setDescription("");
 
         random = new Random();
         angle = 0;
