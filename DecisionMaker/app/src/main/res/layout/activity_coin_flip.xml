@@ -7,11 +7,14 @@
     tools:context="com.cnit355.decisionmaker.CoinFlipActivity">
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="29dp"
+        android:layout_width="368dp"
+        android:layout_height="48dp"
         android:background="#5998ff"
-        android:textColor="#FFFFFF"
+        android:onClick="Back"
         android:text="  > Back"
-        android:textAlignment="viewStart" />
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>

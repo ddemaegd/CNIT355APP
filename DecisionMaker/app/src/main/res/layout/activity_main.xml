@@ -3,69 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.cnit355.decisionmaker.MainActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context="com.cnit355.decisionmaker.MainActivity">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="DecisionMaker"
+        android:textColor="#8b0000"
+
+        android:textSize="40dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="158dp"
-        android:text="DecisionMaker" />
+        android:layout_height="2dp"
+        android:background="#000000"
+        android:textSize="40dp" />
 
-    <TableLayout
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:text="Make your selection:"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
 
-        <TableRow>
-            <!-- TODO: Replace with Correct Images -->
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/ic_launcher" />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginRight="25dp"
+        android:background="#AAAAAA"
+        android:textSize="40dp" />
 
-            <Button
-                android:id="@+id/btnCoin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="MoveToCoinActivity"
-                android:text="Coin Flip" />
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="#FFFFFF"
+        android:elevation="0dp"
+        android:onClick="MoveToCoinActivity"
+        android:padding="15dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/plaincoin" />
 
-        </TableRow>
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="#FFFFFF"
+        android:elevation="0dp"
+        android:onClick="MoveToDiceSelActivity"
+        android:padding="15dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/d6_2" />
 
-        <TableRow>
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="#FFFFFF"
+        android:elevation="0dp"
+        android:onClick="MoveToSpinSelActivity"
+        android:padding="15dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/spinwheel" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/ic_launcher" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="25dp"
+        android:background="#AAAAAA"
+        android:textSize="40dp" />
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="MoveToDiceSelActivity"
-                android:text="Dice Roll" />
-        </TableRow>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="(We can't decide this part for you)"
+        android:textAlignment="center"
+        android:textSize="16dp" />
 
-        <TableRow>
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/ic_launcher" />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="MoveToSpinSelActivity"
-                android:text="Spin Wheel" />
-        </TableRow>
-    </TableLayout>
 </LinearLayout>
