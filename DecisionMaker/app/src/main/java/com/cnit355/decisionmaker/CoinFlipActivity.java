@@ -15,7 +15,7 @@ public class CoinFlipActivity extends AppCompatActivity {
 
     public void Back (View view)
     {
-        Intent mIntent = new Intent(this, SpinWheelSelectionActivity.class);
+        Intent mIntent = new Intent(this, MainActivity.class);
         startActivity(mIntent);
     }
 
