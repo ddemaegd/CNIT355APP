@@ -14,19 +14,32 @@ public class DiceRollSelectionActivity extends AppCompatActivity {
     }
 
     public void btnD4Click(View view) {
-        Intent mIntent = new Intent(this, DiceRollActivity.class);
-        mIntent.putExtra("die", 4);
-        startActivity(mIntent);
+        moveToDieRoller(4);
     }
 
     public void btnD6Click(View view) {
-        Intent mIntent = new Intent(this, DiceRollActivity.class);
-        mIntent.putExtra("die", 6);
-        startActivity(mIntent);
+        moveToDieRoller(6);
+    }
+
+    public void btnD8Click(View view) {
+        moveToDieRoller(8);
+    }
+
+    public void btnD10Click(View view) {
+        moveToDieRoller(10);
+    }
+
+    public void btnD12Click(View view) {
+        moveToDieRoller(12);
     }
 
     public void btnBack(View view) {
         this.finish();
     }
 
+    private void moveToDieRoller(int die) {
+        Intent mIntent = new Intent(this, DiceRollActivity.class);
+        mIntent.putExtra("die", die);
+        startActivity(mIntent);
+    }
 }

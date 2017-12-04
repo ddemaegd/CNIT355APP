@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -123,7 +122,7 @@ public class DiceRollActivity extends AppCompatActivity {
                         txtOutput.setText("Result: Tails");
                     }
                 } else {
-                    txtOutput.setText("Flipping");
+                    txtOutput.setText("Flipping...");
                 }
             }
 
@@ -180,9 +179,6 @@ public class DiceRollActivity extends AppCompatActivity {
                     break;
                 case 12:
                     thisImage.setImageResource(getD12Image(i + 1));
-                    break;
-                case 20:
-                    thisImage.setImageResource(getD20Image(i + 1));
                     break;
                 default:
                     thisImage.setImageResource(getD6Image(i + 1));
@@ -297,31 +293,93 @@ public class DiceRollActivity extends AppCompatActivity {
     }
 
     private int getD8Image(int side) {
-        // TODO: Finish getD8Image
-        return 0;
+        switch(side) {
+            case 1:
+                return R.drawable.d8_1;
+            case 2:
+                return R.drawable.d8_2;
+            case 3:
+                return R.drawable.d8_3;
+            case 4:
+                return R.drawable.d8_4;
+            case 5:
+                return R.drawable.d8_5;
+            case 6:
+                return R.drawable.d8_6;
+            case 7:
+                return R.drawable.d8_7;
+            case 8:
+                return R.drawable.d8_8;
+            default:
+                return -1;
+        }
     }
 
     private int getD10Image(int side) {
-        // TODO: Finish getD10Image
-        return 0;
+        switch(side) {
+            case 1:
+                return R.drawable.d10_1;
+            case 2:
+                return R.drawable.d10_2;
+            case 3:
+                return R.drawable.d10_3;
+            case 4:
+                return R.drawable.d10_4;
+            case 5:
+                return R.drawable.d10_5;
+            case 6:
+                return R.drawable.d10_6;
+            case 7:
+                return R.drawable.d10_7;
+            case 8:
+                return R.drawable.d10_8;
+            case 9:
+                return R.drawable.d10_9;
+            case 10:
+                return R.drawable.d10_10;
+            default:
+                return -1;
+        }
     }
 
     private int getD12Image(int side) {
-        // TODO: Finish getD12Image
-        return 0;
+        switch(side) {
+            case 1:
+                return R.drawable.d12_1;
+            case 2:
+                return R.drawable.d12_2;
+            case 3:
+                return R.drawable.d12_3;
+            case 4:
+                return R.drawable.d12_4;
+            case 5:
+                return R.drawable.d12_5;
+            case 6:
+                return R.drawable.d12_6;
+            case 7:
+                return R.drawable.d12_7;
+            case 8:
+                return R.drawable.d12_8;
+            case 9:
+                return R.drawable.d12_9;
+            case 10:
+                return R.drawable.d12_10;
+            case 11:
+                return R.drawable.d12_11;
+            case 12:
+                return R.drawable.d12_12;
+            default:
+                return -1;
+        }
     }
-
-    private int getD20Image(int side) {
-        // TODO: Finish getD20Image
-        return 0;
-    }
-
 }
 
 class rollingRunnable implements Runnable {
-    int dieSize;
-    boolean blnAnimate;
-    Handler handler;
+    private int dieSize;
+    private boolean blnAnimate;
+    private Handler handler;
+    private final int numRolls = 10;
+    private final int startDelay = 50;
 
     public rollingRunnable(int dieSize, boolean blnAnimate, Handler handler) {
         this.dieSize = dieSize;
@@ -351,18 +409,12 @@ class rollingRunnable implements Runnable {
     }
 
     private void animateDie() throws InterruptedException {
-        final int waitTime = 200;
-        Log.d("animateDie", "Animating Started");
-        sendMessage(getRandom(dieSize), false);
-        Thread.sleep(waitTime);
-        sendMessage(getRandom(dieSize), false);
-        Thread.sleep(waitTime);
-        sendMessage(getRandom(dieSize), false);
-        Thread.sleep(waitTime);
-        sendMessage(getRandom(dieSize), false);
-        Thread.sleep(2 * waitTime);
-        sendMessage(getRandom(dieSize), false);
-        Thread.sleep(3 * waitTime);
+        int delayIncrement = (500 - startDelay) / numRolls;
+        for(int i = 0; i < numRolls; i++) {
+            sendMessage(getRandom(dieSize), false);
+            int thisDelay = startDelay + (i * delayIncrement);
+            Thread.sleep(thisDelay);
+        }
     }
 
     private int getRandom(int dieSize) {
@@ -374,11 +426,13 @@ class rollingRunnable implements Runnable {
 }
 
 class flippingRunnable implements Runnable {
-    boolean blnAnimate;
-    Handler handler;
-    boolean blnIsHeads;
-    final int delay = 10;
-    final int numRotations = 2;
+    private boolean blnAnimate;
+    private Handler handler;
+    private boolean blnIsHeads;
+    private final int delay = 10;
+    private final int numRotations = 12;
+    private final double startSpeed = 36; // Must be greater than 3
+    private double deceleration = (startSpeed - 3) / numRotations;
 
     public flippingRunnable(boolean blnAnimate, boolean blnIsHeads, Handler handler) {
         this.blnAnimate = blnAnimate;
@@ -391,19 +445,19 @@ class flippingRunnable implements Runnable {
         int result = getRandom();
         if(blnAnimate) {
             for(int i = 0; i < numRotations; i++) {
-                int startSpeed = (6 - (2 * i));
-                fullRotate(startSpeed);
+                double currentSpeed = (startSpeed - (deceleration * i));
+                fullRotate(currentSpeed, deceleration);
             }
             if(result == 1) {
                 // Tails
                 if(blnIsHeads) {
-                    flipOver(2);
+                    flipOver(startSpeed - (deceleration * numRotations));
                 }
                 sendMessage(0, false, true);
             } else {
                 // Heads
                 if(!blnIsHeads) {
-                    flipOver(2);
+                    flipOver(startSpeed - (deceleration * numRotations));
                 }
                 sendMessage(0, true, true);
             }
@@ -432,12 +486,12 @@ class flippingRunnable implements Runnable {
         handler.sendMessage(msg);
     }
 
-    private void fullRotate(int startSpeed) {
+    private void fullRotate(double startSpeed, double deceleration) {
         flipOver(startSpeed);
-        flipOver(startSpeed - 1);
+        flipOver(startSpeed - (deceleration / 2));
     }
 
-    private void flipOver(int speed) {
+    private void flipOver(double speed) {
         if(blnIsHeads) {
             headsToTails(speed);
         } else {
@@ -446,17 +500,17 @@ class flippingRunnable implements Runnable {
         blnIsHeads = !blnIsHeads;
     }
 
-    private void headsToTails(int speed) {
+    private void headsToTails(double speed) {
         headsOut(speed);
         tailsIn(speed);
     }
 
-    private void tailsToHeads(int speed) {
+    private void tailsToHeads(double speed) {
         tailsOut(speed);
         headsIn(speed);
     }
 
-    private void headsIn(int speed) {
+    private void headsIn(double speed) {
         for(int i = -90; i <= 0; i += speed) {
             try {
                 Thread.sleep(delay);
@@ -470,7 +524,7 @@ class flippingRunnable implements Runnable {
         }
     }
 
-    private void headsOut(int speed) {
+    private void headsOut(double speed) {
         for(int i = 0; i <= 90; i += speed) {
             try {
                 Thread.sleep(delay);
@@ -484,7 +538,7 @@ class flippingRunnable implements Runnable {
         }
     }
 
-    private void tailsIn(int speed) {
+    private void tailsIn(double speed) {
         for(int i = -90; i <= 0; i += speed) {
             try {
                 Thread.sleep(delay);
@@ -498,7 +552,7 @@ class flippingRunnable implements Runnable {
         }
     }
 
-    private void tailsOut(int speed) {
+    private void tailsOut(double speed) {
         for(int i = 0; i <= 90; i += speed) {
             try {
                 Thread.sleep(delay);
@@ -519,8 +573,10 @@ class flippingRunnable implements Runnable {
 }
 
 class d4Runnable implements Runnable {
-    boolean animate;
-    Handler handler;
+    private boolean animate;
+    private Handler handler;
+    private final int startDelay = 50;
+    private final int numRolls = 10;
 
     public d4Runnable(boolean animate, Handler handler) {
         this.animate = animate;
@@ -558,7 +614,6 @@ class d4Runnable implements Runnable {
     private void animateDie() throws InterruptedException {
         // TODO: Finish animateDie()
         final int waitTime = 200;
-        Log.d("animateDie", "Animating Started");
         roll(false);
         Thread.sleep(waitTime);
         roll(false);
@@ -569,6 +624,13 @@ class d4Runnable implements Runnable {
         Thread.sleep(2 * waitTime);
         roll(false);
         Thread.sleep(3 * waitTime);
+
+        int delayIncrement = (500 - startDelay) / numRolls;
+        for(int i = 0; i < numRolls; i++) {
+            roll(false);
+            int thisDelay = startDelay + (i * delayIncrement);
+            Thread.sleep(thisDelay);
+        }
     }
 
     private void roll(boolean isResult) {

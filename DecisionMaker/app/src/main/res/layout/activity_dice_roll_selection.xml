@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="29dp"
         android:background="#5998ff"
-        android:textColor="#FFFFFF"
+        android:textColor="@null"
         android:text="  > Back"
         android:textAlignment="viewStart"
         android:onClick="btnBack"/>
@@ -24,7 +24,7 @@
         android:layout_below="@+id/btnBack"
         android:layout_margin="10dp"
         android:scaleType="fitXY"
-        android:background="#FFFFFF"
+        android:background="@null"
         android:onClick="btnD4Click"
         app:srcCompat="@drawable/d4_1"/>
 
@@ -36,46 +36,45 @@
         android:layout_below="@+id/btnD4"
         android:layout_margin="10dp"
         android:scaleType="fitXY"
-        android:background="#FFFFFF"
+        android:background="@null"
         android:onClick="btnD6Click"
         app:srcCompat="@drawable/d6_6" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnD8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btnD6"
-        android:layout_margin="15dp"
-        android:text="D8"/>
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"
+        android:background="@null"
+        android:onClick="btnD8Click"
+        app:srcCompat="@drawable/d8_8"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/btnd10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btnD8"
-        android:layout_margin="15dp"
-        android:text="D10"/>
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"
+        android:background="@null"
+        android:onClick="btnD10Click"
+        app:srcCompat="@drawable/d10_10"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/btnD12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btnd10"
-        android:layout_margin="15dp"
-        android:text="D12"/>
-
-    <Button
-        android:id="@+id/btnD20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btnD12"
-        android:layout_margin="15dp"
-        android:text="D20"/>
-
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"
+        android:background="@null"
+        android:onClick="btnD12Click"
+        app:srcCompat="@drawable/d12_12"/>
 
 
 </RelativeLayout>

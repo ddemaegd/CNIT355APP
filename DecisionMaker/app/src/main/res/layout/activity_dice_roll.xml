@@ -33,7 +33,7 @@
             android:id="@+id/txtOutput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btnRoll"
+            android:layout_above="@+id/chkAnimate"
             android:layout_centerInParent="true"
             android:text="Click Die to roll"
             android:textColor="@android:color/black"
