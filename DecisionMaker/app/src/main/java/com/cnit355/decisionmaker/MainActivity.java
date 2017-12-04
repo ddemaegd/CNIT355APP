@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void MoveToCoinActivity (View view){
-        Intent mIntent = new Intent(this, CoinFlipActivity.class);
+        Intent mIntent = new Intent(this, DiceRollActivity.class);
+        mIntent.putExtra("die", 2);
         startActivity(mIntent);
     }
 

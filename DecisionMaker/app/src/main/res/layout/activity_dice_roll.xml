@@ -29,26 +29,27 @@
         android:layout_weight="1">
 
 
-
         <TextView
             android:id="@+id/txtOutput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnRoll"
             android:layout_centerInParent="true"
-            android:text="Click button to roll die"
+            android:text="Click Die to roll"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/btnRoll"
+        <CheckBox
+            android:id="@+id/chkAnimate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_alignParentBottom="true"
+            android:checked="true"
             android:layout_centerHorizontal="true"
-            android:onClick="btnRoll"
-            android:text="Roll" />
+            android:layout_alignParentBottom="true"
+            android:layout_margin="15dp"
+            android:text="Animate Die Rolls"
+            android:onClick="chkAnimateClick"
+            />
 
     </RelativeLayout>
 

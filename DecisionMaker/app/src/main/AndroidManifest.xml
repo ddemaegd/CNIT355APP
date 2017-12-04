@@ -16,7 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CoinFlipActivity" />
         <activity android:name=".DiceRollSelectionActivity" />
         <activity android:name=".DiceRollActivity" />
         <activity android:name=".SpinWheelSelectionActivity" />

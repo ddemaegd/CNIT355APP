@@ -85,18 +85,6 @@
         android:layout_margin="15dp"
         android:text="D20"/>
 
-    <CheckBox
-        android:id="@+id/chkAnimate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
-        android:text="Animate Die Rolls"
-        android:onClick="chkAnimateClick"
-        />
-
 
 
 </RelativeLayout>
