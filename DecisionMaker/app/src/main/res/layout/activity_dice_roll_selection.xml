@@ -25,6 +25,7 @@
         android:layout_margin="10dp"
         android:scaleType="fitXY"
         android:background="#FFFFFF"
+        android:onClick="btnD4Click"
         app:srcCompat="@drawable/d4_1"/>
 
     <ImageButton
@@ -38,17 +39,7 @@
         android:background="#FFFFFF"
         android:onClick="btnD6Click"
         app:srcCompat="@drawable/d6_6" />
-    <!--
-    <Button
-        android:id="@+id/btnD6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btnD6Click"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btnD4"
-        android:layout_margin="15dp"
-        android:text="D6"/>
-    -->
+
     <Button
         android:id="@+id/btnD8"
         android:layout_width="wrap_content"

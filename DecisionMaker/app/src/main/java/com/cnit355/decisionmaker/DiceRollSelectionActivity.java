@@ -13,6 +13,12 @@ public class DiceRollSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dice_roll_selection);
     }
 
+    public void btnD4Click(View view) {
+        Intent mIntent = new Intent(this, DiceRollActivity.class);
+        mIntent.putExtra("die", 4);
+        startActivity(mIntent);
+    }
+
     public void btnD6Click(View view) {
         Intent mIntent = new Intent(this, DiceRollActivity.class);
         mIntent.putExtra("die", 6);
