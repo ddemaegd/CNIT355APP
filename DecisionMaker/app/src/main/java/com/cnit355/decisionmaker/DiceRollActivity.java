@@ -43,9 +43,6 @@ public class DiceRollActivity extends AppCompatActivity {
         // Instantiate handler to animate die roll
         setupHandler();
 
-        // Instantiate thread
-        setupThread();
-
         // If this is a coin flip, change the checkbox and button texts
         if(dieSize == 2) {
             txtOutput.setText("Click Coin to Flip");
@@ -57,9 +54,8 @@ public class DiceRollActivity extends AppCompatActivity {
         dieArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!thread.isAlive()) {
-                    thread.start();
-                }
+                setupThread();
+                thread.start();
             }
         });
 
